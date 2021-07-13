@@ -1,9 +1,20 @@
+import {Col, Container, Row} from 'react-bootstrap';
+import TypeBar from '../components/TypeBar';
+import BrandBar from '../components/BrandBar';
 
 const Shop = () => {
   return (
-    <p >
-      SHOP PAGE
-    </p>
+    <Container>
+      <Row>
+        <Col md={3}>
+          <TypeBar/>
+        </Col>
+        <Col md={9}>
+          <BrandBar/>
+        </Col>
+      </Row>
+
+    </Container>
   );
 };
 
