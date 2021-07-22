@@ -5,7 +5,6 @@ import {Card, Row} from "react-bootstrap";
 
 const BrandBar = observer(() => {
   const {devices} = useContext(Context)
-
   return (
     <Row className='justify-content-around mt-2'>
       {devices.brands.map((brand) =>
@@ -13,6 +12,8 @@ const BrandBar = observer(() => {
           key={brand.id}
           style={{cursor: 'pointer'}}
           className='mr-2'
+          onClick={() => devices.setSelectedBrand(brand)}
+          border={brand.id === devices.selectedBrand.id ? 'success' : 'light'}
         >
           {brand.name}
         </Card>

@@ -13,31 +13,13 @@ import Auth from "./pages/Auth";
 import DevicePage from "./pages/DevicePage";
 
 export const authRoutes = [
-  {
-    path: ADMIN_ROUTE,
-    Component: Admin
-  },
-  {
-    path: BASKET_ROUTE,
-    Component: Basket
-  }
+  {path: ADMIN_ROUTE, Component: Admin},
+  {path: BASKET_ROUTE, Component: Basket},
 ]
 
 export const publicRouter = [
-  {
-    path: SHOP_ROUTER,
-    Component: Shop
-  },
-  {
-    path: LOGIN_ROUTE,
-    Component: Auth
-  },
-  {
-    path: REGISTRATION_ROUTE,
-    Component: Auth
-  },
-  {
-    path: DEVICE_ROUTE + '/:id',
-    Component: DevicePage
-  },
+  {path: SHOP_ROUTER, Component: Shop},
+  {path: LOGIN_ROUTE, Component: Auth},
+  {path: REGISTRATION_ROUTE, Component: Auth},
+  {path: DEVICE_ROUTE + '/:id', Component: DevicePage},
 ]
