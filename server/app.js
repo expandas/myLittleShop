@@ -13,8 +13,6 @@ const PORT = process.env.PORT || 3030
 app.use(cors())
 app.use(express.json())
 app.use('/api', router)
-
-//Обработка ошибок, последний!
 app.use(errorHandler)
 
 

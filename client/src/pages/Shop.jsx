@@ -4,6 +4,7 @@ import BrandBar from '../components/BrandBar';
 import DeviceList from '../components/DeviceList';
 
 const Shop = () => {
+
   return (
     <Container>
       <Row>

@@ -6,7 +6,7 @@ import {observer} from 'mobx-react-lite';
 
 const AppRouter = observer(() => {
   const {user} = useContext(Context)
-  console.log('user.isAuth: ', user.isAuth)
+
   return (
     <Switch>
       {user.isAuth && authRoutes.map(({path, Component}) => <Route path={path} component={Component} key={path} exact/>)}

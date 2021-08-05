@@ -5,6 +5,7 @@ import {Card, Row} from "react-bootstrap";
 
 const BrandBar = observer(() => {
   const {devices} = useContext(Context)
+
   return (
     <Row className='justify-content-around mt-2'>
       {devices.brands.map((brand) =>

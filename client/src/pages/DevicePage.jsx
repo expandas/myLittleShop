@@ -3,6 +3,7 @@ import {Button, Card, Col, Container, Image, Row} from 'react-bootstrap';
 import bigStar from '../assets/bigStar.png'
 
 const DevicePage = () => {
+
   const device = {
     id: 6,
     name: "Iphone X",
@@ -16,6 +17,7 @@ const DevicePage = () => {
     {id: 3, title: 'Аккумулятор', description: 'держит долго'},
     {id: 4, title: 'Камера', description: 'есть'},
   ]
+
   return (
     <Container className='mt-2'>
       <Row>

@@ -4,7 +4,6 @@ import {Context} from '../../index';
 
 const CreateDeviceModal = ({show, onHide}) => {
   const {devices} = useContext(Context)
-  console.log(devices)
 
   return (
     <Modal
