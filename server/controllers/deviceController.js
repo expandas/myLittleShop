@@ -23,7 +23,6 @@ class DeviceController {
             deviceId: device.id
           })
         })
-
       }
       return res.json(device)
     } catch (e) {
@@ -38,17 +37,19 @@ class DeviceController {
     let offset = currentPage * limit - limit
     let devices
     if (!brandId && !typeId) {
-      devices = await Device.findAndCountAll({limit, offset})
+      devices = await Device.findAndCountAll()
     }
     if (brandId && !typeId) {
-      devices = await Device.findAndCountAll({where: {brandId}, limit ,offset})
+      devices = await Device.findAndCountAll({where: {brandId}})
     }
     if (!brandId && typeId) {
-      devices = await Device.findAndCountAll({where: {typeId}, limit ,offset})
+      devices = await Device.findAndCountAll({where: {typeId}})
     }
     if (brandId && typeId) {
-      devices = await Device.findAndCountAll({where: {brandId, typeId}, limit, offset})
+      devices = await Device.findAndCountAll({where: {brandId, typeId}})
     }
+    devices.limit = Number(limit)
+    devices.offset = offset
     return res.json(devices)
   }
 
