@@ -12,6 +12,11 @@ class BrandController {
         return res.json(brands)
     }
 
+
+  async getAll(req, res) {
+    const allBrands = await Brand.findAll()
+    res.json(allBrands)
+  }
 }
 
 module.exports = new BrandController()

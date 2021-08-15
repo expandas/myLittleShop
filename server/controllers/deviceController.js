@@ -10,10 +10,8 @@ class DeviceController {
       let format = image.name.split('.')
       format = format[format.length - 1]
       const fileName = uuidv4() + '.' + format
-      console.log('fileName === ', fileName)
       image.mv(path.resolve(__dirname, '..', 'static', fileName))
       const device = await Device.create({name, price, brandId, typeId, image: fileName})
-      console.log('deviceID', device.id)
       if (req.body.info) {
         const info = JSON.parse(req.body.info)
         info.forEach(el => {
@@ -61,8 +59,10 @@ class DeviceController {
         include: [{model: DeviceInfo, as: 'info'}]
       }
     )
-    res.json(device)
+    return res.json(device)
   }
 }
 
 module.exports = new DeviceController()
+
+
