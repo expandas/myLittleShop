@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Form, Modal} from 'react-bootstrap';
+import {createBrand} from '../../http/deviceApi';
+import {observer} from 'mobx-react-lite';
 
-const CreateBrand = ({show, onHide}) => {
+const CreateBrand = observer(({show, onHide}) => {
+  const [input, setInput] = useState('')
+
+  const addBrand = (brand) => {
+    if (brand) {
+      createBrand(input)
+      setInput('')
+      onHide()
+    } else {
+      alert('Введите название брэнда')
+    }
+  }
+
   return (
     <Modal
       size="lg"
@@ -18,15 +32,17 @@ const CreateBrand = ({show, onHide}) => {
       <Modal.Body>
         <Form >
           <Form.Control
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             placeholder={'Введите брэнд'}/>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='outline-success' onClick={onHide}>Добавить</Button>
+        <Button variant='outline-success' onClick={() => addBrand(input)}>Добавить</Button>
         <Button variant='outline-danger' onClick={onHide}>Закрыть</Button>
       </Modal.Footer>
     </Modal>
   );
-};
+});
 
 export default CreateBrand;
