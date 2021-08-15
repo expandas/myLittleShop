@@ -14,22 +14,22 @@ const Shop = observer(() => {
   useEffect(() => {
     getTypes().then(data => devices.setTypes(data))
     getBrands().then(data => devices.setBrands(data))
-    getDevices(null, null, 1,9)
+    getDevices(null, null, 1, 9)
       .then(data => {
         devices.setDevices(data.rows)
         devices.setTotalDevices(data.count)
         devices.setLimitOnPage(data.limit)
       })
-    },[])
+  }, [])
 
   useEffect(() => {
-    getDevices(devices.selectedBrand.id, devices.selectedType.id, devices.currentPage,9)
+    getDevices(devices.selectedBrand.id, devices.selectedType.id, devices.currentPage, 9)
       .then(data => {
         devices.setDevices(data.rows)
         devices.setTotalDevices(data.count)
         devices.setLimitOnPage(data.limit)
-    })
-  },[devices.currentPage, devices.selectedBrand, devices.selectedType])
+      })
+  }, [devices.currentPage, devices.selectedBrand, devices.selectedType])
 
   return (
     <Container>
@@ -39,8 +39,8 @@ const Shop = observer(() => {
         </Col>
         <Col md={9}>
           <BrandBar/>
-          <DeviceList />
-          <PaginationPages />
+          <DeviceList/>
+          <PaginationPages/>
         </Col>
       </Row>
     </Container>

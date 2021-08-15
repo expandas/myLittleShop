@@ -16,16 +16,15 @@ const PaginationPages = observer(() => {
     <Pagination>
       {pages.length < 2 ? null :
         pages.map(page =>
-            <Pagination.Item
-              key={page}
-              active={devices.currentPage === page}
-              onClick={() => devices.setCurrentPage(page)}
-            >
-              {page}
-            </Pagination.Item>
-          )
+          <Pagination.Item
+            key={page}
+            active={devices.currentPage === page}
+            onClick={() => devices.setCurrentPage(page)}
+          >
+            {page}
+          </Pagination.Item>
+        )
       }
-
     </Pagination>
   );
 });
