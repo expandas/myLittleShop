@@ -10,23 +10,24 @@ import PaginationPages from '../components/PaginationPages';
 
 const Shop = observer(() => {
   const {devices} = useContext(Context)
-  console.log('current page',devices.currentPage)
 
   useEffect(() => {
     getTypes().then(data => devices.setTypes(data))
     getBrands().then(data => devices.setBrands(data))
-    getDevices(null, null, 1,2)
+    getDevices(null, null, 1,9)
       .then(data => {
-      devices.setDevices(data.rows)
-      devices.setTotalDevices(data.count)
-    })
+        devices.setDevices(data.rows)
+        devices.setTotalDevices(data.count)
+        devices.setLimitOnPage(data.limit)
+      })
     },[])
 
   useEffect(() => {
-    getDevices(devices.selectedBrand.id, devices.selectedType.id, devices.currentPage,2)
+    getDevices(devices.selectedBrand.id, devices.selectedType.id, devices.currentPage,9)
       .then(data => {
-      devices.setDevices(data.rows)
-      devices.setTotalDevices(data.count)
+        devices.setDevices(data.rows)
+        devices.setTotalDevices(data.count)
+        devices.setLimitOnPage(data.limit)
     })
   },[devices.currentPage, devices.selectedBrand, devices.selectedType])
 

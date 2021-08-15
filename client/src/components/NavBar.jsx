@@ -1,12 +1,14 @@
 import React, {useContext} from 'react';
 import {Context} from "../index";
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
-import {NavLink, useHistory, useLocation,} from "react-router-dom";
+import {useHistory, useLocation,} from "react-router-dom";
 import {ADMIN_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTER} from "../helpers/routesConsts";
 import {observer} from "mobx-react-lite";
+import {getDevices} from '../http/deviceApi';
 
 const NavBar = observer(() => {
   const {user} = useContext(Context)
+  const {devices} = useContext(Context)
   const history = useHistory()
   const location = useLocation()
 
@@ -19,28 +21,43 @@ const NavBar = observer(() => {
   const adminHandler = () => {
     history.push(ADMIN_ROUTE)
   }
+  const homeHandler = () => {
+    getDevices(null, null, 1, 9)
+      .then(data => {
+        devices.setDevices(data.rows)
+        devices.setTotalDevices(data.count)
+        devices.setLimitOnPage(data.limit)
+      })
+      .then(data => devices.setSelectedBrand([]))
+      .then(data => devices.setSelectedType([]))
+      .then(data => history.push(SHOP_ROUTER))
+  }
 
   return (
     <Navbar bg="dark" variant="dark">
-      <Container >
-        <NavLink style={{color: 'white'}} to={SHOP_ROUTER}>My little shop</NavLink>
+      <Container>
+        <Nav.Link style={{color: 'white'}}
+                  onClick={homeHandler}
+        >
+          My little shop
+        </Nav.Link>
         {user.isAuth ?
           <Nav className="ml-auto">
             {location.pathname === '/admin' ?
               null :
               <Button
                 variant={"outline-light"}
-                onClick={()=> adminHandler()}
+                onClick={() => adminHandler()}
               >
                 Панель администратора
               </Button>}
-             <Button
-               variant={"outline-light"}
-               className='ml-2'
-               onClick={()=> logoutHandler()}
-             >
-               Выйти
-             </Button>
+            <Button
+              variant={"outline-light"}
+              className='ml-2'
+              onClick={() => logoutHandler()}
+            >
+              Выйти
+            </Button>
           </Nav> :
           <Nav className="ml-auto">
             <Button

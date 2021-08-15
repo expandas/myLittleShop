@@ -23,12 +23,12 @@ export default class DeviceStore {
     this._devices = devices
   }
   setSelectedType(type){
+    this.selectedType === type ? this.setSelectedType([]) : this._selectedType = type
     this.setCurrentPage = 1
-    this._selectedType = type
   }
   setSelectedBrand(brand){
+    this.selectedBrand === brand ? this.setSelectedBrand([]) : this._selectedBrand = brand
     this.setCurrentPage = 1
-    this._selectedBrand = brand
   }
   setCurrentPage(page){
     this._currentPage = page
