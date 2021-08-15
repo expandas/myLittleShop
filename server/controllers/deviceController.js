@@ -1,10 +1,13 @@
+
 const {Device, DeviceInfo} = require('../models/models');
 const {v4: uuidv4} = require('uuid');
 const path = require('path')
 
+
 class DeviceController {
   async create(req, res, next) {
     try {
+
       const {typeId, brandId, name, price} = req.body
       const {image} = req.files
       let format = image.name.split('.')
@@ -28,14 +31,17 @@ class DeviceController {
       return res.json(device)
     } catch (e) {
       console.log('***ERROR***', e)
+
     }
   }
 
   async getAll(req, res) {
+
     let {brandId, typeId, currentPage, limit} = req.query
     currentPage = currentPage || 1
     limit = limit || 10
     let offset = currentPage * limit - limit
+
     let devices
     if (!brandId && !typeId) {
       devices = await Device.findAndCountAll({limit, offset})
@@ -49,6 +55,7 @@ class DeviceController {
     if (brandId && typeId) {
       devices = await Device.findAndCountAll({where: {brandId, typeId}, limit, offset})
     }
+
     return res.json(devices)
   }
 
@@ -58,10 +65,13 @@ class DeviceController {
       {
         where: {id},
         include: [{model: DeviceInfo, as: 'info'}]
-      }
+      },
     )
-    res.json(device)
+    return res.json(device)
+
   }
 }
 
 module.exports = new DeviceController()
+
+
