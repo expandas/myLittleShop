@@ -1,6 +1,7 @@
 const {Device, DeviceInfo} = require('../models/models');
 const {v4: uuidv4} = require('uuid');
 const path = require('path')
+const ApiError = require('../error/ApiError')
 
 class DeviceController {
   async create(req, res, next) {
@@ -24,7 +25,7 @@ class DeviceController {
       }
       return res.json(device)
     } catch (e) {
-      console.log('***ERROR***', e)
+      return next(ApiError.internal("Что-то пошло не так, попробуйте еще раз"))
     }
   }
 
