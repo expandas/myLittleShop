@@ -49,4 +49,4 @@ router.use('/brand', brandRouter)
 router.use('/device', deviceRouter)
 
 module.exports = router
-module.exports = herokuRouter()
+module.exports = herokuRouter
