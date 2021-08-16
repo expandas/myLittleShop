@@ -27,10 +27,12 @@ const start = async () => {
   try {
     await sequelize.authenticate()
     await sequelize.sync()
-    console.log('DB started')
-    app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+    app.listen(PORT,
+      // () => console.log(`Server started on port ${PORT}`)
+    )
   } catch (error) {
-    console.log(new Error(error))
+    // console.log(new Error(error))
+    return new Error(error)
   }
 }
 

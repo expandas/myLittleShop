@@ -2,7 +2,7 @@ const Router = require('express')
 const router = new Router()
 //heroku
 const herokuRouter = Router.Router()
-const apiRouter = require('./api');
+const apiRouter = require('./api')
 //heroku
 
 const deviceRouter = require('./deviceRouter')
@@ -12,7 +12,7 @@ const userRouter = require('./userRouter')
 
 //heroku
 herokuRouter.use('/api', apiRouter);
-// Static routes
+
 // Serve React build files in production
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 
 // Serve the static assets in the frontend's build folder
-  herokuRouter.use(Router.static(path.resolve("../frontend/build")));
+  herokuRouter.use(Router.static(path.resolve("../client/build")));
 
   // Serve the frontend's index.html file at all other routes NOT starting with /api
   herokuRouter.get(/^(?!\/?api).*/, (req, res) => {
