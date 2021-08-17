@@ -7,8 +7,7 @@
     "sequelize": "sequelize",
     "sequelize-cli": "sequelize-cli",
     "dev": "nodemon app.js",
-    "start": "per-env",
-
+    "start": "per-env"
   },
   "keywords": [],
   "author": "",
