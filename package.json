@@ -1,8 +1,6 @@
 {
   "name": "webShop_ulbiTv_PERN",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "install": "npm --prefix server install server && npm --prefix client install client",
     "heroku-postbuild": "npm run build --prefix client",
@@ -15,7 +13,7 @@
     "url": "git+https://github.com/expandas/myLittleShop.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "expandas",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/expandas/myLittleShop/issues"
