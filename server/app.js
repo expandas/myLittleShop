@@ -11,6 +11,7 @@ const sequelize = require("./db")
 const models = require('./models/models')
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
+const {log} = require('nodemon/lib/utils');
 
 app.use(cors())
 app.use(express.static(path.resolve(__dirname, 'static')))
@@ -24,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(
       path.resolve(__dirname, '../../client', 'build', 'index.html')
     )
-})
+  })
   router.use(express.static(path.resolve("../client/build")))
 
   router.get(/^(?!\/?api).*/, (req, res) => {
@@ -49,9 +50,12 @@ const start = async () => {
   try {
     await sequelize.authenticate()
     await sequelize.sync()
-    app.listen(PORT,
-      () => console.log(`Server started on port ${PORT}`),
-    )
+      .then(() => {
+        app.listen(PORT)
+          .then(() => console.log(`Server started on port ${PORT}`)
+          )
+      })
+
   } catch (error) {
     console.log(error)
   }
