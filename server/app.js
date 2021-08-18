@@ -42,7 +42,7 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-app.use('/api', router)
+app.use('/', router)
 app.use(errorHandler) //Обработка ошибок, последний mw!
 
 const start = async () => {
