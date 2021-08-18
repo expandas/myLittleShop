@@ -50,7 +50,7 @@ const start = async () => {
   try {
     await sequelize.authenticate()
     await sequelize.sync()
-    await app.listen(PORT)
+    app.listen(PORT)
   } catch (error) {
     console.log(error)
   }
