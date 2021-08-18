@@ -17,6 +17,11 @@ module.exports = new Sequelize(prodConfig,
     dialect: "postgres",
     protocol: "postgres",
     port: 5432,
+    dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
   }
 )
 
