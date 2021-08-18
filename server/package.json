@@ -9,7 +9,7 @@
     "dev": "nodemon app.js",
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "npm start"
+    "start:production": "node app.js"
   },
   "keywords": [],
   "author": "",
