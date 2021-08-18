@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const $host = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  // baseURL: process.env.REACT_APP_API_URL
+  baseURL: 'https://my-little-pet-shop.herokuapp.com/'
 })
 
 const $authHost = axios.create({
