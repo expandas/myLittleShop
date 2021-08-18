@@ -2,12 +2,12 @@ const {Sequelize} = require("sequelize")
 
 const prodConfig = {
   connectionString: process.env.DATABASE_URL,
-  dialect: 'postgres',
+  // dialect: 'postgres',
   // protocol: 'postgres',
   // dialectOptions: {
-  ssl: {
-    rejectUnauthorized: false
-  }
+  // ssl: {
+  //   rejectUnauthorized: false
+  // }
   // }
 }
 
