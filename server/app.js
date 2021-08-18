@@ -20,7 +20,7 @@ app.use(fileUpload({}))
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')))
-  router.get('/', (req, res) => {
+  router.get('/*', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken())
     res.sendFile(
       path.resolve(__dirname, '../../client', 'build', 'index.html')
@@ -50,8 +50,7 @@ const start = async () => {
   try {
     await sequelize.authenticate()
     await sequelize.sync()
-      .then(() => app.listen(PORT))
-      .then(() => console.log(`Server started on port ${PORT}`))
+    await app.listen(PORT)
   } catch (error) {
     console.log(error)
   }
