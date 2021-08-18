@@ -21,7 +21,7 @@ app.use(fileUpload({}))
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')))
   router.get('/', (req, res) => {
-    // res.cookie('XSRF-TOKEN', req.csrfToken())
+    res.cookie('XSRF-TOKEN', req.csrfToken())
     res.sendFile(
       path.resolve(__dirname, '../../client', 'build', 'index.html')
     )
@@ -29,19 +29,19 @@ if (process.env.NODE_ENV === 'production') {
   router.use(express.static(path.resolve("../client/build")))
 
   router.get(/^(?!\/?api).*/, (req, res) => {
-    // res.cookie('XSRF-TOKEN', req.csrfToken());
+    res.cookie('XSRF-TOKEN', req.csrfToken());
     res.sendFile(
       path.resolve(__dirname, '../../client', 'build', 'index.html')
     );
   })
 }
 
-// if (process.env.NODE_ENV !== 'production') {
-//   router.get('/api/csrf/restore', (req, res) => {
-//     res.cookie('XSRF-TOKEN', req.csrfToken());
-//     res.status(201).json({});
-//   });
-// }
+if (process.env.NODE_ENV !== 'production') {
+  router.get('/api/csrf/restore', (req, res) => {
+    res.cookie('XSRF-TOKEN', req.csrfToken());
+    res.status(201).json({});
+  });
+}
 
 app.use('/api', router)
 app.use(errorHandler) //Обработка ошибок, последний mw!
