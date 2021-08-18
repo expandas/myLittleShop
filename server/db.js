@@ -15,7 +15,7 @@ const devConfig = `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@
 
 module.exports = new Sequelize(
   process.env.NODE_ENV === 'production' ?
-    prodConfig :
+    process.env.DATABASE_URL :
     devConfig
 )
 
