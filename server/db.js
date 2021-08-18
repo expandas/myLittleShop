@@ -5,9 +5,9 @@ const prodConfig = {
   dialect: 'postgres',
   // protocol: 'postgres',
   // dialectOptions: {
-  //   ssl: {
-  //     rejectUnauthorized: false
-  //   }
+  ssl: {
+    rejectUnauthorized: false
+  }
   // }
 }
 
@@ -15,11 +15,7 @@ const devConfig = `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@
 
 module.exports = new Sequelize(
   process.env.NODE_ENV === 'production' ?
-    {
-      connectionString: process.env.DATABASE_URL,
-      dialect: "postgres",
-
-    } :
+    prodConfig :
     devConfig
 )
 
