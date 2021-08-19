@@ -100,6 +100,7 @@ const CreateDeviceModal = observer(({show, onHide}) => {
             className={'mt-2 mb-2'}
             type="file"
             onChange={addFileHandler}
+
           />
           <hr/>
           <Button
