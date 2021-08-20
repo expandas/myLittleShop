@@ -1,27 +1,25 @@
 {
   "name": "webShop_ulbiTv_PERN",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "npm run build --prefix client",
     "install": "npm --prefix server install server && npm --prefix client install client",
-    "dev:server": "npm install --prefix server start",
-    "dev:client": "npm install --prefix client start",
-    "sequelize": "npm run --prefix client sequelize",
+    "heroku-postbuild": "npm run build --prefix client",
+    "sequelize": "npm run --prefix server sequelize",
     "sequelize-cli": "npm run --prefix server sequelize-cli",
-    "start": "npm start --prefix server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm start --prefix server"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/expandas/myLittleShop.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "expandas",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/expandas/myLittleShop/issues"
   },
-  "homepage": "https://github.com/expandas/myLittleShop#readme"
+  "homepage": "https://github.com/expandas/myLittleShop#readme",
+  "dependencies": {
+    "gitignore": "^0.7.0"
+  }
 }

@@ -1,0 +1,4 @@
+.DS_store
+.package-lock
+.idea
+node_modules
