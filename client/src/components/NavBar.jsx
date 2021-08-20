@@ -39,19 +39,21 @@ const NavBar = observer(() => {
         <Nav.Link style={{color: 'white'}}
                   onClick={homeHandler}
         >
-          My little shop
+          Boring shop
         </Nav.Link>
         {user.isAuth ?
           <Nav className="ml-auto">
             {location.pathname === '/admin' ?
               null :
               <Button
+                size='sm'
                 variant={"outline-light"}
                 onClick={() => adminHandler()}
               >
                 Панель администратора
               </Button>}
             <Button
+              size='sm'
               variant={"outline-light"}
               className='ml-2'
               onClick={() => logoutHandler()}
@@ -61,12 +63,14 @@ const NavBar = observer(() => {
           </Nav> :
           <Nav className="ml-auto">
             <Button
+              size='sm'
               variant={"outline-light"}
               onClick={() => history.push(LOGIN_ROUTE)}
             >
               Войти
             </Button>
             <Button
+              size='sm'
               variant={"outline-light"}
               onClick={() => history.push(REGISTRATION_ROUTE)} className='ml-2'
             >
