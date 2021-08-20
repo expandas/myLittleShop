@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/expandas/myLittleShop/issues"
   },
-  "homepage": "https://github.com/expandas/myLittleShop#readme"
+  "homepage": "https://github.com/expandas/myLittleShop#readme",
+  "dependencies": {
+    "gitignore": "^0.7.0"
+  }
 }
