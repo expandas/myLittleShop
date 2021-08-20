@@ -58,7 +58,7 @@ const Auth = observer(() => {
             {isLogin ?
               <div>
                 Нет аккаунта?&nbsp;
-                <NavLink 
+                <NavLink
                   to={REGISTRATION_ROUTE}
                 >
                   Зарегистрироваться!
@@ -74,15 +74,14 @@ const Auth = observer(() => {
               </div>
             }
             <Button
+              type={'submit'}
               className="mt-3 align-items-center"
               variant={'outline-success'}
               onClick={() => authFn()}
             >
               {isLogin ? 'Войти' : 'Зарегистрироваться'}
-
             </Button>
           </Row>
-
         </Form>
       </Card>
     </Container>
