@@ -2,15 +2,24 @@ import React, {useEffect, useState} from 'react';
 import {Button, Card, Col, Container, Image, Row} from 'react-bootstrap';
 import bigStar from '../assets/bigStar.png'
 import {getOneDevice} from '../http/deviceApi';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory, NavLink} from 'react-router-dom';
+import {LOGIN_ROUTE, REGISTRATION_ROUTE} from '../helpers/routesConsts'
 
 const DevicePage = () => {
   const [device, setDevice] = useState({info: []})
   const {id} = useParams()
+  const history = useHistory()
 
   useEffect(() => {
     getOneDevice(id).then(data => setDevice(data))
   }, [])
+
+  const toRegistrationPage = () => {
+    history.push(REGISTRATION_ROUTE)
+  }
+  const toLoginPage = () => {
+    history.push(LOGIN_ROUTE)
+  }
 
   return (
     <Container className='mt-2'>
@@ -43,7 +52,28 @@ const DevicePage = () => {
                 style={{width: 300, height: 300, fontSize: 32, border: '5px solid lightgray'}}
           >
             <h3>От {device.price} руб.</h3>
-            <Button variant='outline-dark'>Добавить в корзину</Button>
+            {localStorage.token ?
+              <Button
+                variant='outline-dark'
+              >
+                Добавить в корзину
+              </Button> :
+              <p style={{fontSize:  '16px'}}>
+                <NavLink
+
+                  to={LOGIN_ROUTE}
+                >
+                  Войдите&nbsp;
+                </NavLink>
+                или&nbsp;
+                <NavLink
+                  className='fs-2'
+
+                  to={REGISTRATION_ROUTE}
+                >
+                  зарегистрируйтесь
+                </NavLink>
+              </p>}
           </Card>
         </Col>
       </Row>
