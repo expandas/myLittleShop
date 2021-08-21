@@ -39,7 +39,7 @@ const NavBar = observer(() => {
         <Nav.Link style={{color: 'white'}}
                   onClick={homeHandler}
         >
-          My little shop
+          Boring shop
         </Nav.Link>
         {user.isAuth ?
           <Nav className="ml-auto">
@@ -53,15 +53,15 @@ const NavBar = observer(() => {
                 Панель администратора
               </Button>}
             {location.pathname === '/basket' ?
-            null :
-            <Button
-              size='sm'
-              variant={"outline-light"}
-              className='ml-2'
-              onClick={() => history.push(BASKET_ROUTE)}
-            >
-              Корзина
-            </Button>}
+              null :
+              <Button
+                size='sm'
+                variant={"outline-light"}
+                className='ml-2'
+                onClick={() => history.push(BASKET_ROUTE)}
+              >
+                Корзина
+              </Button>}
             <Button
               size='sm'
               variant={"outline-light"}
