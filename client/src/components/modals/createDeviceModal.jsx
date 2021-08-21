@@ -7,7 +7,6 @@ import {observer} from 'mobx-react-lite';
 const CreateDeviceModal = observer(({show, onHide}) => {
   const {devices} = useContext(Context)
 
-
   const [selectedType, setSelectedType] = useState('')
   const [selectedBrand, setSelectedBrand] = useState('')
   const [name, setName] = useState('')
