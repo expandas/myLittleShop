@@ -9,7 +9,8 @@ const AppRouter = observer(() => {
 
   return (
     <Switch>
-      {user.isAuth && authRoutes.map(({path, Component}) => <Route path={path} component={Component} key={path} exact/>)}
+      {user.isAuth && authRoutes.map(({path, Component}) => <Route path={path} component={Component} key={path}
+                                                                   exact/>)}
       {publicRouter.map(({path, Component}) => <Route path={path} component={Component} key={path} exact/>)}
     </Switch>
   )

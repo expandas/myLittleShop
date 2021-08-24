@@ -10,6 +10,7 @@ import PaginationPages from '../components/PaginationPages';
 
 const Shop = observer(() => {
   const {devices} = useContext(Context)
+  const {user} = useContext(Context)
 
   useEffect(() => {
     getTypes().then(data => devices.setTypes(data))

@@ -1,24 +1,28 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, Card, Col, Container, Image, Row} from 'react-bootstrap';
 import bigStar from '../assets/bigStar.png'
 import {getOneDevice} from '../http/deviceApi';
-import {useParams, useHistory, NavLink} from 'react-router-dom';
+import {useParams, NavLink} from 'react-router-dom';
 import {LOGIN_ROUTE, REGISTRATION_ROUTE} from '../helpers/routesConsts'
+import AddToCartAlert from "../components/alerts/addToCartAlert";
+import {addToCart} from "../http/basketApi";
+import {Context} from "../index";
 
 const DevicePage = () => {
   const [device, setDevice] = useState({info: []})
   const {id} = useParams()
-  const history = useHistory()
+  const {user} = useContext(Context)
+  const [alertVisible, setAlertVisible] = useState(false)
 
   useEffect(() => {
     getOneDevice(id).then(data => setDevice(data))
   }, [])
 
-  const toRegistrationPage = () => {
-    history.push(REGISTRATION_ROUTE)
-  }
-  const toLoginPage = () => {
-    history.push(LOGIN_ROUTE)
+  const addDeviceToBasket = deviceId => {
+    setAlertVisible(true)
+    let timer = setTimeout(() => setAlertVisible(false), 2500)
+    addToCart(deviceId).then(basket => user.setBasket(basket))
+    return () => clearTimeout(timer)
   }
 
   return (
@@ -51,16 +55,17 @@ const DevicePage = () => {
           <Card className='d-flex align-items-center justify-content-around'
                 style={{width: 300, height: 300, fontSize: 32, border: '5px solid lightgray'}}
           >
+            {alertVisible ? <AddToCartAlert/> : null}
             <h3>От {device.price} руб.</h3>
             {localStorage.token ?
               <Button
+                onClick={() => addDeviceToBasket(id)}
                 variant='outline-dark'
               >
                 Добавить в корзину
               </Button> :
               <p style={{fontSize: '16px'}}>
                 <NavLink
-
                   to={LOGIN_ROUTE}
                 >
                   Войдите&nbsp;
@@ -68,7 +73,6 @@ const DevicePage = () => {
                 или&nbsp;
                 <NavLink
                   className='fs-2'
-
                   to={REGISTRATION_ROUTE}
                 >
                   зарегистрируйтесь
