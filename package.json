@@ -6,7 +6,7 @@
     "heroku-postbuild": "npm run build --prefix client",
     "sequelize": "npm run --prefix server sequelize",
     "sequelize-cli": "npm run --prefix server sequelize-cli",
-    "start": "npm start --prefix server",
+    "start": "npm start --prefix server"
   },
   "repository": {
     "type": "git",
