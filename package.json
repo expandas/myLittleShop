@@ -7,7 +7,6 @@
     "sequelize": "npm run --prefix server sequelize",
     "sequelize-cli": "npm run --prefix server sequelize-cli",
     "start": "npm start --prefix server",
-    "build": "sequelize db:migrate"
   },
   "repository": {
     "type": "git",
