@@ -9,7 +9,7 @@ export default class DeviceStore {
     this._selectedBrand = {}
     this._currentPage = 1
     this._totalDevices = 0
-    this._limitOnPage = 3
+    this._limitOnPage = 9
 
     makeAutoObservable(this)
   }
@@ -28,12 +28,12 @@ export default class DeviceStore {
 
   setSelectedType(type) {
     this.selectedType === type ? this.setSelectedType([]) : this._selectedType = type
-    this.setCurrentPage = 1
+    this.setCurrentPage(1)
   }
 
   setSelectedBrand(brand) {
     this.selectedBrand === brand ? this.setSelectedBrand([]) : this._selectedBrand = brand
-    this.setCurrentPage = 1
+    this.setCurrentPage(1)
   }
 
   setCurrentPage(page) {
@@ -80,4 +80,3 @@ export default class DeviceStore {
     return this._limitOnPage
   }
 }
-

@@ -27,7 +27,6 @@ class BasketController {
 
   async deleteFromBasket(req, res) {
     const {deviceId} = req.body
-    console.log(req.body)
     const basketId = req.user.id //basketId === userId
     const basketDevice = await BasketDevice.destroy({where: {deviceId}})
     const basket = await BasketDevice.findAll(
@@ -36,6 +35,12 @@ class BasketController {
         include: {model: Device}
       }
     )
+    return res.json(basket)
+  }
+
+  async checkout (req, res) {
+    const basketId = req.user.id
+    const basket = await BasketDevice.destroy({where: {basketId}})
     return res.json(basket)
   }
 }

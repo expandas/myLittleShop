@@ -1,4 +1,4 @@
-import {$authHost} from './index';
+import {$authHost, $host} from './index';
 
 const basketUrl = '/api/basket'
 
@@ -13,6 +13,11 @@ export const addToCart = async (deviceId) => {
 }
 
 export const deleteFromCart = async (deviceId) => {
-  const {data} = await $authHost.delete(basketUrl, {data: {deviceId}})
+  const {data} = await $authHost.patch(basketUrl, {deviceId})
+  return data
+}
+
+export const checkout = async () => {
+  const {data} = $authHost.delete(basketUrl)
   return data
 }

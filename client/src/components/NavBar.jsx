@@ -26,7 +26,6 @@ const NavBar = observer(() => {
       .then(data => {
         devices.setDevices(data.rows)
         devices.setTotalDevices(data.count)
-        devices.setLimitOnPage(data.limit)
       })
       .then(data => devices.setSelectedBrand([]))
       .then(data => devices.setSelectedType([]))

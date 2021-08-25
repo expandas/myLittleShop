@@ -1,12 +1,17 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {deleteFromCart, getBasket} from "../http/basketApi";
 import ListGroup from "react-bootstrap/ListGroup";
 import {Button, Image} from "react-bootstrap";
+import {useHistory} from "react-router-dom";
+import CheckoutModal from "../components/modals/checkoutModal";
 
 const Basket = observer(() => {
   const {user} = useContext(Context)
+  const history = useHistory()
+  const [checkoutVisible, setCheckoutVisible] = useState(false)
+
   useEffect(() => {
     getBasket().then(data => user.setBasket(data))
   }, [])
@@ -50,11 +55,13 @@ const Basket = observer(() => {
           Сумма заказа: {user.basket.reduce((acc, el) => acc + el.device.price, 0)} рублей
           <Button
             variant={'outline-success'}
+            onClick={()=>setCheckoutVisible(true)}
           >
             Оплатить
           </Button>
         </ListGroup.Item>
       </ListGroup>
+      <CheckoutModal show={checkoutVisible} onHide={() => setCheckoutVisible(false)}/>
     </div>
   );
 });
