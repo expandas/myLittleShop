@@ -11,5 +11,6 @@ ____
 ____
 
 # Деплой
+[Проект задеплоен на heroku](https://my-little-pet-shop.herokuapp.com/ "myLittleShop")
 Проект задеплоен на heroku
-https://my-little-pet-shop.herokuapp.com/
+
