@@ -79,10 +79,8 @@ const Auth = observer(() => {
               onClick={() => authFn()}
             >
               {isLogin ? 'Войти' : 'Зарегистрироваться'}
-
             </Button>
           </Row>
-
         </Form>
       </Card>
     </Container>

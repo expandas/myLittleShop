@@ -8,16 +8,22 @@ const DeviceItem = ({device}) => {
 
   return (
     <Col md={3} className='m-3'>
-      <Card style={{width: 150, cursor: 'pointer'}} border={'light'}
-            onClick={() => history.push(DEVICE_ROUTE + '/' + device.id)}
+      <Card
+        style={{
+          width: 150,
+          height: 200,
+          cursor: 'pointer',
+          alignItems: 'center',
+          border: "none",
+        }}
+        onClick={() => history.push(DEVICE_ROUTE + '/' + device.id)}
       >
-        <Image width={150} height={150}
+        <Image height={130} style={{maxWidth: '150px', objectFit: 'contain'}}
                src={process.env.REACT_APP_API_URL + device.image}/>
-        <div className='d-flex justify-content-between align-items-center mw-150'>
-          <div> {device.brands} </div>
-          <div> {device.name} </div>
-          <div className='d-flex align-items-center mt-1 justify-content-between  text-black-50'>
-            <div> {device.rating} </div>
+        <div className='d-flex align-items-center flex-grow-1 '>
+          <div className={'d-flex'} style={{width: "120px", fontSize: '14px'}}>{device.name}</div>
+          <div className='d-flex align-items-center'>
+            <div style={{fontSize: '14px'}}>{device.rating}</div>
             <Image height={15} width={15}
                    src={star}
             />

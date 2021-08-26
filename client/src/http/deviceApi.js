@@ -21,11 +21,12 @@ export const getBrands = async () => {
   return data
 }
 export const createDevice = async (device) => {
-  const {data} = await $authHost.post('api/device', device)
+  const {data} = await $authHost.post(deviceUrl, device)
   return data
 }
 export const getDevices = async (brandId, typeId, currentPage, limit = 3) => {
-  const {data} = await $host.get(deviceUrl, {params: {
+  const {data} = await $host.get(deviceUrl, {
+    params: {
       brandId, typeId, currentPage, limit
     }
   })

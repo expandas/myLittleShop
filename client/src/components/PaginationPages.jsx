@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {observer} from 'mobx-react-lite';
 import {Context} from '../index';
 import {Pagination} from 'react-bootstrap';
@@ -11,10 +11,9 @@ const PaginationPages = observer(() => {
   for (let i = 0; i < pagesCount; i++) {
     pages.push(i + 1)
   }
-
   return (
     <Pagination>
-      {pages.length < 2 ? null :
+      {pages.length <= 1 ? null :
         pages.map(page =>
           <Pagination.Item
             key={page}

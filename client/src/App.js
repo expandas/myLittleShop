@@ -11,21 +11,21 @@ const App = observer(() => {
   const {user} = useContext(Context)
   const [loading, setLoading] = useState(true)
 
-  useEffect(()=>{
-      check().then(data => {
-        user.setUser(user)
-        user.setIsAuth(true)
-      })
-        .finally(() => setLoading(false))
-  },[user])
+  useEffect(() => {
+    check().then(data => {
+      user.setUser(user)
+      user.setIsAuth(true)
+    })
+      .finally(() => setLoading(false))
+  }, [user])
   if (loading) {
     return <Spinner animation={'grow'}/>
   }
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <AppRouter />
+      <NavBar/>
+      <AppRouter/>
     </BrowserRouter>
   )
 })

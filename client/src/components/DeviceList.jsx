@@ -4,18 +4,18 @@ import {Context} from '../index';
 import {Row} from 'react-bootstrap';
 import DeviceItem from './DeviceItem';
 
-const DeviceList = observer (() => {
+const DeviceList = observer(() => {
   const {devices} = useContext(Context)
 
   return (
-  <Row className='d-flex '>
-    {devices.devices.map( device =>
-     <DeviceItem
-       key={device.id}
-       device={device}
-     />
-    )}
-  </Row>
+    <Row className='d-flex '>
+      {devices.devices.map(device =>
+        <DeviceItem
+          key={device.id}
+          device={device}
+        />
+      )}
+    </Row>
   );
 });
 

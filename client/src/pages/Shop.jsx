@@ -18,7 +18,6 @@ const Shop = observer(() => {
       .then(data => {
         devices.setDevices(data.rows)
         devices.setTotalDevices(data.count)
-        devices.setLimitOnPage(data.limit)
       })
   }, [])
 
@@ -27,7 +26,6 @@ const Shop = observer(() => {
       .then(data => {
         devices.setDevices(data.rows)
         devices.setTotalDevices(data.count)
-        devices.setLimitOnPage(data.limit)
       })
   }, [devices.currentPage, devices.selectedBrand, devices.selectedType])
 

@@ -34,12 +34,12 @@ const CreateTypeModal = observer(({show, onHide}) => {
           <Form.Control
             placeholder={'Введите тип'}
             value={input}
-            onChange={(e)=> setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
           />
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='outline-success' onClick={()=>addType(input)}>Добавить</Button>
+        <Button variant='outline-success' onClick={() => addType(input)}>Добавить</Button>
         <Button variant='outline-danger' onClick={onHide}>Закрыть</Button>
       </Modal.Footer>
     </Modal>

@@ -43,7 +43,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use('/api', router)
-app.use(errorHandler) //Обработка ошибок, последний mw!
+app.use(errorHandler) // последний mw
 
 const start = async () => {
   try {

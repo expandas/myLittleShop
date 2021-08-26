@@ -7,7 +7,6 @@ import {observer} from 'mobx-react-lite';
 const CreateDeviceModal = observer(({show, onHide}) => {
   const {devices} = useContext(Context)
 
-
   const [selectedType, setSelectedType] = useState('')
   const [selectedBrand, setSelectedBrand] = useState('')
   const [name, setName] = useState('')
@@ -36,7 +35,13 @@ const CreateDeviceModal = observer(({show, onHide}) => {
     formData.append('image', file)
     formData.append('info', JSON.stringify(info))
     createDevice(formData)
-    onHide()
+      .then(data => setSelectedType(''))
+      .then(data => setSelectedBrand(''))
+      .then(data => setName(''))
+      .then(data => setPrice(''))
+      .then(data => setFile(null))
+      .then(data => setInfo([]))
+      .then(data => onHide())
   }
 
   return (
@@ -100,7 +105,6 @@ const CreateDeviceModal = observer(({show, onHide}) => {
             className={'mt-2 mb-2'}
             type="file"
             onChange={addFileHandler}
-
           />
           <hr/>
           <Button

@@ -30,7 +30,7 @@ const CreateBrand = observer(({show, onHide}) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form >
+        <Form>
           <Form.Control
             value={input}
             onChange={(e) => setInput(e.target.value)}

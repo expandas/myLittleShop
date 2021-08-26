@@ -3,7 +3,7 @@ import CreateDeviceModal from '../components/modals/createDeviceModal';
 import CreateTypeModal from '../components/modals/createTypeModal';
 import {useContext, useEffect, useState} from 'react';
 import CreateBrand from '../components/modals/createBrand';
-import {getBrands, getDevices, getTypes} from '../http/deviceApi';
+import {getBrands, getTypes} from '../http/deviceApi';
 import {Context} from '../index';
 
 const Admin = () => {
