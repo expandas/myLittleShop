@@ -1,5 +1,5 @@
 {
-  "name": "webShop_ulbiTv_PERN",
+  "name": "myLittleShop",
   "version": "1.0.0",
   "scripts": {
     "install": "npm --prefix server install server && npm --prefix client install client",
