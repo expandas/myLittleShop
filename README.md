@@ -2,7 +2,7 @@
 Небольшой интернет-магазин
 
 # Технический стек:
-- Front: React JS, React-Bootstrap;
+- Front: React.js, React-Bootstrap, MobX;
 - Back: Node.js, Express.js;
 - DB: postgres (sequelize);
 
