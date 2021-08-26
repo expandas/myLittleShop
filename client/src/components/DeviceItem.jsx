@@ -18,7 +18,7 @@ const DeviceItem = ({device}) => {
         }}
         onClick={() => history.push(DEVICE_ROUTE + '/' + device.id)}
       >
-        <Image height={130} style={{maxWidth: '150px'}}
+        <Image height={130} style={{maxWidth: '150px', objectFit: 'contain'}}
                src={process.env.REACT_APP_API_URL + device.image}/>
         <div className='d-flex align-items-center flex-grow-1 '>
           <div className={'d-flex'} style={{width: "120px", fontSize: '14px'}}>{device.name}</div>
